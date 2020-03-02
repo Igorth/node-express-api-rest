@@ -11,19 +11,8 @@ mongose.connect('mongodb://localhost:27017/nodeapirest');
 
 requireDir('./src/models');
 
-const Product = mongose.model('Product');
+// Rotas
+app.use('/api', require("./src/routes"));
 
-
-
-// Primeira rota
-// toda vez que o usuario acessar a rota
-app.get('/', (req, res) => {
-    Product.create({ 
-        title: 'React', 
-        description: 'Build native apps',
-        url: 'http://github.com/facebook/react-native'
-    })
-    return res.send('Hello Rock');
-});
 
 app.listen(3001);
