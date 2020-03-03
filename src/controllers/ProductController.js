@@ -4,8 +4,9 @@ const Product = mongoose.model('Product');
 
 module.exports = {
     async index(req, res){
+        const { page = 1 } = req.query;
         // so executa depois que conseguir os registros do banco de dados
-        const products = await Product.find();
+        const products = await Product.paginate({}, { page, limit: 10 });
         return res.json(products);
     },
 
