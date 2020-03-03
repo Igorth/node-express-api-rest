@@ -6,5 +6,7 @@ const ProductController = require('./controllers/ProductController');
 // Primeira rota
 // toda vez que o usuario acessar a rota
 routes.get('/products', ProductController.index);
+routes.get('/products/:id', ProductController.show);
+routes.post('/products', ProductController.store);
 
 module.exports = routes;

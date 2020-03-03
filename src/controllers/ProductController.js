@@ -6,7 +6,16 @@ module.exports = {
     async index(req, res){
         // so executa depois que conseguir os registros do banco de dados
         const products = await Product.find();
-
         return res.json(products);
+    },
+
+    async show(req, res) {
+        const product = await Product.findById(req.params.id);
+        return res.json(product);
+    },
+
+    async store(req, res){
+        const product = await Product.create(req.body);
+        return res.json(product);
     },
 };
